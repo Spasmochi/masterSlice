@@ -5,7 +5,7 @@
     "dataset": "production"
   },
   "project": {
-    "name": "slife-of-pie"
+    "name": "slice-of-pie"
   },
   "plugins": [
     "@sanity/base",
