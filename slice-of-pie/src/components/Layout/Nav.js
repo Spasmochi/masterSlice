@@ -7,7 +7,6 @@ const NAV = styled.nav`
   display: flex;
   flex-direction: row;
   width: 100%;
-  margin-top: -6rem;
   margin-bottom: 1rem;
 `;
 
