@@ -1,3 +1,3 @@
-export { Nav } from "./Nav";
-export { Footer } from "./Footer";
-export { Layout } from "./Layout";
+export { Nav } from "./Layout/Nav";
+export { Footer } from "./Layout/Footer";
+export { Layout } from "./Layout/Layout";

@@ -12,7 +12,7 @@ export function Footer() {
   return (
     <FooterWrapper>
       <p>
-        What a footer! <span>👣</span>
+        What a footer! <span role="img">👣</span>
       </p>
     </FooterWrapper>
   );

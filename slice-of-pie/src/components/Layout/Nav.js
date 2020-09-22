@@ -21,6 +21,9 @@ const NavWrapper = styled.ul`
 const NavItem = styled.li`
   & a {
     text-decoration-line: none;
+    &:hover {
+      color: red;
+    }
   }
 `;
 
