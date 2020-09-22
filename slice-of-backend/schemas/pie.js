@@ -1,6 +1,7 @@
 import {
   IoMdPizza as icon
 } from 'react-icons/io';
+import PriceAdd from "../components/PriceAdd"
 export default {
   name: 'pie',
   title: 'Pies',
@@ -35,8 +36,8 @@ export default {
       type: 'number',
       description: 'Price of pizza in cents',
       validation: (Rule) => Rule.min(1000),
-      // TODO: Add custom input component
-
+      inputComponent: PriceAdd,
+      
     },
     {
       name: "toppings",
