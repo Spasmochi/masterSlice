@@ -27,25 +27,25 @@ const NavItem = styled.li`
   }
 `;
 
+const FunSpan = ({ children }) => <span role="image">{children}</span>;
+
+const navItems = [
+  { name: "Home", slug: "/" },
+  { name: "Pizza", slug: "/pizza" },
+  { name: "Menu", slug: "/menu" },
+  { name: "Wizards", slug: "/pieWizards" },
+  { name: "Order", slug: "/order" },
+];
+
 export function Nav() {
   return (
     <NAV>
       <NavWrapper>
-        <NavItem>
-          <Link to="/">Home</Link>
-        </NavItem>
-        <NavItem>
-          <Link to="/pizza">Pizza</Link>
-        </NavItem>
-        <NavItem>
-          <Link to="/menu">menu</Link>
-        </NavItem>
-        <NavItem>
-          <Link to="/pieWizards">pie wizards</Link>
-        </NavItem>
-        <NavItem>
-          <Link to="/order">order</Link>
-        </NavItem>
+        {navItems.map((item) => (
+          <NavItem>
+            <Link to={item.slug}>{item.name}</Link>
+          </NavItem>
+        ))}
       </NavWrapper>
     </NAV>
   );
