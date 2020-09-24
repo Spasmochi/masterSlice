@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "package.json",
+  "author": "Sam McMurtrie",
   "license": "UNLICENSED",
   "scripts": {
     "lint": "eslint .",

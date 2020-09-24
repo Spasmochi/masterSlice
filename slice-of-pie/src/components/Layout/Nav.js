@@ -65,7 +65,7 @@ export function Nav() {
     <NAV>
       <NavWrapper>
         <li>
-          <Link to="/pizza">Pizza</Link>
+          <Link to="/pies">Pies</Link>
         </li>
         <li>
           <Link to="/menu">Menu</Link>
@@ -79,7 +79,7 @@ export function Nav() {
           <Link to="/pieWizards">Wizards</Link>
         </li>
         <li>
-          <Link to="/pieWizards">Order</Link>
+          <Link to="/order">Order</Link>
         </li>
       </NavWrapper>
     </NAV>
