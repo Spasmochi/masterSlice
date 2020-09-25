@@ -50,8 +50,6 @@ const NavWrapper = styled.ul`
   }
 `;
 
-const FunSpan = ({ children }) => <span role="img">{children}</span>;
-
 // const navItems = [
 //   { name: "Home", slug: "/" },
 //   { name: "Pizza", slug: "/pizza" },

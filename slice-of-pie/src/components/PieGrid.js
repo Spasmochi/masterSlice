@@ -11,8 +11,7 @@ const PiesGrid = styled.div`
   margin-bottom: 5rem;
   gap: 4rem;
   grid-auto-rows: auto auto auto;
-  padding-left: 5rem;
-  padding-right: 5rem;
+
   @media (min-width: 1024px) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     max-width: none;
@@ -20,10 +19,8 @@ const PiesGrid = styled.div`
 `;
 
 const PieCard = styled.div`
-  display: grid;
-  grid-template-rows: subgrid;
-  grid-row: span 3;
-  grid-gap: 1rem;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Toppings = styled.p`

@@ -1,11 +1,12 @@
 import { graphql } from "gatsby";
 import React from "react";
-import { PieGrid } from "../components/index";
+import { PieGrid, SelectToppings } from "../components/index";
 
 export default function PiePage({ data }) {
   const pies = data.pies.nodes;
   return (
     <>
+      <SelectToppings />
       <PieGrid pies={pies} />
     </>
   );
@@ -26,7 +27,7 @@ export const query = graphql`
         }
         image {
           asset {
-            fixed(width: 200, height: 200) {
+            fixed(width: 300, height: 400) {
               ...GatsbySanityImageFixed
             }
             fluid(maxWidth: 400) {

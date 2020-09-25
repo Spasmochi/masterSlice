@@ -17,6 +17,8 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   background: white;
+  padding-left: 5rem;
+  padding-right: 5rem;
 `;
 
 const Border = styled.div`
