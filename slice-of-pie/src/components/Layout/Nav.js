@@ -7,7 +7,7 @@ const NAV = styled.nav`
   display: flex;
   flex-direction: row;
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 5rem;
 `;
 
 const NavWrapper = styled.ul`
@@ -18,6 +18,7 @@ const NavWrapper = styled.ul`
   justify-content: space-around;
   list-style-type: none;
   margin-inline-start: none;
+  margin-bottom:8rem;
   margin-block-start: 0;
   margin-block-end: 0;
   padding-inline-start: 0;

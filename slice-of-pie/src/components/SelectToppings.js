@@ -93,7 +93,7 @@ export const SelectToppings = () => {
     <ToppingCard>
       {
         toppingsWithCounts.map(topping =>
-          <Link to={`/topping/${topping.name}`} key={topping.id}>
+          <Link to={`/topping/${topping.name.replace(" ","-")}`} key={topping.id}>
             <span>{topping.name}</span>
             <span className="count">{topping.count}</span>
           </Link>
