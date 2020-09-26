@@ -29,7 +29,7 @@ const Toppings = styled.p`
 
 const SinglePie = ({ pie }) => (
   <PieCard>
-    <Link to={`/pies/${pie.Slug.current}`}>
+    <Link to={`/pies/${pie.slug.current}`}>
       <h2>
         <span className="mark">{pie.name}</span>
       </h2>

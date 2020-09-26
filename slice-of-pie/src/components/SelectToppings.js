@@ -1,37 +1,34 @@
-import {
-  graphql,
-  Link,
-  useStaticQuery
-} from "gatsby";
+import { graphql, Link, useStaticQuery } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 
 const ToppingCard = styled.div`
-  display:flex;
-  flex-direction:row;
-  flex-wrap:wrap;
-  gap:1rem;
-  margin-bottom:2rem;
-  a{
-    display:grid;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  a {
+    display: grid;
     grid-template-columns: auto 1fr;
-    grid-gap:0 1rem;
-    padding:3px;
-    align-items:center;
+    grid-gap: 0 1rem;
+    padding: 3px;
+    align-items: center;
     background: var(--grey);
-    border-radius:2px;
-    .count{
-      background:white;
-      padding:2px 5px;
+    border-radius: 2px;
+    .count {
+      background: white;
+      padding: 2px 5px;
     }
-    .active{
+    .active {
       background: var(--yellow);
     }
   }
-`
+`;
 
 function piesWithTopping(pies) {
-  const counts = pies.map(pie => pie.toppings)
+  const counts = pies
+    .map((pie) => pie.toppings)
     .flat()
     .reduce((accumulator, topping) => {
       const toppingExists = accumulator[topping.id];
@@ -41,8 +38,8 @@ function piesWithTopping(pies) {
         accumulator[topping.id] = {
           id: topping.id,
           name: topping.name,
-          count: 1
-        }
+          count: 1,
+        };
       }
 
       return accumulator;
@@ -54,18 +51,8 @@ function piesWithTopping(pies) {
 }
 
 export const SelectToppings = () => {
-  const {
-    toppings,
-    pies
-  } = useStaticQuery(graphql `
+  const { toppings, pies } = useStaticQuery(graphql`
     query {
-      toppings: allSanityTopping {
-        nodes {
-          name
-          id
-          vegetarian
-        }
-      }
       pies: allSanityPie {
         nodes {
           toppings {
@@ -80,7 +67,7 @@ export const SelectToppings = () => {
   console.clear();
   console.log({
     toppings,
-    pies
+    pies,
   });
 
   const toppingsWithCounts = piesWithTopping(pies.nodes);
@@ -91,14 +78,15 @@ export const SelectToppings = () => {
   // Loop over the list of toppings
   return (
     <ToppingCard>
-      {
-        toppingsWithCounts.map(topping =>
-          <Link to={`/topping/${topping.name.replace(" ","-")}`} key={topping.id}>
-            <span>{topping.name}</span>
-            <span className="count">{topping.count}</span>
-          </Link>
-          )
-      }
+      {toppingsWithCounts.map((topping) => (
+        <Link
+          to={`/topping/${topping.name.replace(" ", "-")}`}
+          key={topping.id}
+        >
+          <span>{topping.name}</span>
+          <span className="count">{topping.count}</span>
+        </Link>
+      ))}
     </ToppingCard>
   );
 };

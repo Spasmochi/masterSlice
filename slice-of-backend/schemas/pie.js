@@ -13,7 +13,7 @@ export default {
       description: "Name of pizza",
     },
     {
-      name: "Slug",
+      name: "slug",
       title: "Slug",
       type: "slug",
       options: {

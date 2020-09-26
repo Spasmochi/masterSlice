@@ -19,7 +19,7 @@ export const query = graphql`
         name
         price
         id
-        Slug {
+        slug {
           current
         }
         toppings {
