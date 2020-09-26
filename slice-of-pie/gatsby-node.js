@@ -4,7 +4,7 @@ const createPiePages = async ({ graphql, actions }) => {
   const pieTemplate = path.resolve("./src/templates/Pie.js");
   const { data } = await graphql(`
     query {
-      allSanityPie {
+      pies: allSanityPie {
         nodes {
           name
           slug {
@@ -22,8 +22,7 @@ const createPiePages = async ({ graphql, actions }) => {
       }
     }
   `);
-  console.log(data);
-  data.allSanityPie.nodes.forEach((pie) => {
+  data.pies.nodes.forEach((pie) => {
     actions.createPage({
       path: `pies/${pie.slug.current}`,
       component: pieTemplate,
@@ -34,7 +33,29 @@ const createPiePages = async ({ graphql, actions }) => {
   });
 };
 
+const createToppingPages = async ({ graphql, actions }) => {
+  const toppingTemplate = path.resolve("./src/pages/pies.js");
+  const { data } = await graphql(`
+    query {
+      toppings: allSanityTopping {
+        nodes {
+          name
+          id
+        }
+      }
+    }
+  `);
+  data.toppings.nodes.forEach((topping) => {
+    actions.createPage({
+      path: `topping/${topping.name.replace(" ", "-")}`,
+      component: toppingTemplate,
+      context: {
+        topping: topping.name,
+      },
+    });
+  });
+};
+
 exports.createPages = async (params) => {
-  createPiePages(params);
-  console.log("making pages");
+  await Promise.all([createPiePages(params), createToppingPages(params)]);
 };

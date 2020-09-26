@@ -2,19 +2,21 @@ import { graphql } from "gatsby";
 import React from "react";
 import { PieGrid, SelectToppings } from "../components/index";
 
-export default function PiePage({ data }) {
+export default function PiePage({ data, pageContext }) {
   const pies = data.pies.nodes;
   return (
     <>
-      <SelectToppings />
+      <SelectToppings active={pageContext.topping} />
       <PieGrid pies={pies} />
     </>
   );
 }
 
 export const query = graphql`
-  query PieGet {
-    pies: allSanityPie {
+  query PieGet($topping: [String]) {
+    pies: allSanityPie(
+      filter: { toppings: { elemMatch: { name: { in: $topping } } } }
+    ) {
       nodes {
         name
         price

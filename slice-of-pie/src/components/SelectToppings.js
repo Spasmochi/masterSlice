@@ -16,11 +16,11 @@ const ToppingCard = styled.div`
     align-items: center;
     background: var(--grey);
     border-radius: 2px;
-    .count {
+    &.count {
       background: white;
       padding: 2px 5px;
     }
-    .active {
+    &[aria-current="page"] {
       background: var(--yellow);
     }
   }
@@ -50,8 +50,8 @@ function piesWithTopping(pies) {
   return sortedToppings;
 }
 
-export const SelectToppings = () => {
-  const { toppings, pies } = useStaticQuery(graphql`
+export const SelectToppings = ({ active }) => {
+  const { pies } = useStaticQuery(graphql`
     query {
       pies: allSanityPie {
         nodes {
@@ -64,20 +64,15 @@ export const SelectToppings = () => {
     }
   `);
 
-  console.clear();
-  console.log({
-    toppings,
-    pies,
-  });
-
   const toppingsWithCounts = piesWithTopping(pies.nodes);
-
-  console.log(toppingsWithCounts);
-
+  console.log(active);
   // Get a list of all the pizzas with their toppings
   // Loop over the list of toppings
   return (
     <ToppingCard>
+      <Link to="/pies">
+        <span>All {pies.nodes.length} Toppings</span>
+      </Link>
       {toppingsWithCounts.map((topping) => (
         <Link
           to={`/topping/${topping.name.replace(" ", "-")}`}

@@ -17,7 +17,6 @@ const ToppingCard = styled.div`
     li {
       background: var(--grey);
       border-radius: 2px;
-      background: var(--yellow);
       width: fit-content;
     }
   }
