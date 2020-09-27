@@ -1,4 +1,5 @@
 const path = require(`path`);
+const fetch = require("isomorphic-fetch");
 
 const createPiePages = async ({ graphql, actions }) => {
   const pieTemplate = path.resolve("./src/templates/Pie.js");
@@ -9,14 +10,6 @@ const createPiePages = async ({ graphql, actions }) => {
           name
           slug {
             current
-          }
-          id
-          image {
-            asset {
-              fluid(maxWidth: 800) {
-                ...GatsbySanityImageFluid
-              }
-            }
           }
         }
       }
@@ -54,6 +47,30 @@ const createToppingPages = async ({ graphql, actions }) => {
       },
     });
   });
+};
+
+const getWines = async ({ actions, createNodeId, createContentDigest }) => {
+  const res = await fetch("https://sampleapis.com/wines/api/whites");
+  const wines = await res.json();
+  for (const wine of wines) {
+    const nodeMeta = {
+      id: createNodeId(`wine-${wine.wine}`),
+      parent: null,
+      children: null,
+      name: wine.wine,
+      price: Math.floor(Math.random() * (10000 - 100) + 100) / 100,
+      internal: {
+        type: "Wine",
+        mediaType: "application/json",
+        contentDigest: createContentDigest(wine),
+      },
+    };
+    actions.createNode({ ...wine, ...nodeMeta });
+  }
+};
+
+exports.sourceNodes = async (params) => {
+  await Promise.all([getWines(params)]);
 };
 
 exports.createPages = async (params) => {
