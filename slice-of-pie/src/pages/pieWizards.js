@@ -1,5 +1,35 @@
 import React from "react";
+import { WizardGrid } from "../components/index";
 
-export default function pieWizards() {
-  return <div>Meet the pie Wizards</div>;
-}
+const pieWizards = ({ data }) => {
+  const wizards = data.wizards.nodes;
+  return (
+    <>
+      <WizardGrid Wizards={wizards} />
+    </>
+  );
+};
+
+export default pieWizards;
+
+export const query = graphql`
+  query {
+    wizards: allSanityWizard {
+      nodes {
+        id
+        name
+        image {
+          asset {
+            fixed(width: 300, height: 400) {
+              ...GatsbySanityImageFixed
+            }
+          }
+        }
+        slug {
+          current
+        }
+        description
+      }
+    }
+  }
+`;

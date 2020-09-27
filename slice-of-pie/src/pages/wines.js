@@ -2,7 +2,7 @@ import { graphql } from "gatsby";
 import React from "react";
 import { WineGrid } from "../components/index";
 
-const wines = ({ data, pageContext }) => {
+const wines = ({ data }) => {
   const wines = data.wines.nodes;
   return <WineGrid Wine={wines} />;
 };
