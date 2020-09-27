@@ -6,7 +6,6 @@ import Typography from "../../styles/Typography";
 import stripes from "../../assets/images/stripes.svg";
 
 const Wrapper = styled.div`
-  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   align-items: center;
