@@ -57,6 +57,7 @@ const getWines = async ({ actions, createNodeId, createContentDigest }) => {
       id: createNodeId(`wine-${wine.wine}`),
       parent: null,
       children: null,
+      avgRating: Math.floor(Math.random() * 5) + 1,
       name: wine.wine,
       price: Math.floor(Math.random() * (10000 - 100) + 100) / 100,
       internal: {
