@@ -1,3 +1,4 @@
+import { graphql } from "gatsby";
 import React from "react";
 import { WizardGrid } from "../components/index";
 
@@ -16,6 +17,7 @@ export default pieWizards;
 export const query = graphql`
   query {
     wizards: allSanityWizard {
+      totalCount
       nodes {
         id
         name
