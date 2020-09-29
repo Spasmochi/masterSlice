@@ -65,7 +65,6 @@ export const SelectToppings = ({ active }) => {
   `);
 
   const toppingsWithCounts = piesWithTopping(pies.nodes);
-  console.log(active);
   // Get a list of all the pizzas with their toppings
   // Loop over the list of toppings
   return (

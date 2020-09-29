@@ -19,11 +19,15 @@ const NavRow = styled.nav`
     text-decoration: none;
     flex: 1;
     &[aria-current],
-    .current {
+    &.current {
       color: var(--red);
     }
     &:hover {
       color: darkred;
+    }
+    &[disabled] {
+      pointer-events: none;
+      color: var(--grey);
     }
   }
 `;

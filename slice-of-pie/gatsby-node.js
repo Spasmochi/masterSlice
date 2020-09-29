@@ -71,10 +71,42 @@ const getWines = async ({ actions, createNodeId, createContentDigest }) => {
   }
 };
 
+const eachWinePage = async ({ graphql, actions }) => {
+  const { data } = await graphql(`
+    query {
+      wines: allWine {
+        totalCount
+        nodes {
+          name
+          id
+          slug
+        }
+      }
+    }
+  `);
+  const pageSize = 16;
+  const pageCount = Math.ceil(data.wines.totalCount / pageSize);
+  Array.from({ length: pageCount }).forEach((_, i) => {
+    actions.createPage({
+      path: `/wines/${i + 1}`,
+      component: path.resolve("./src/pages/wines.js"),
+      context: {
+        skip: i * pageSize,
+        currentPage: i + 1,
+        pageSize,
+      },
+    });
+  });
+};
+
 exports.sourceNodes = async (params) => {
   await Promise.all([getWines(params)]);
 };
 
-exports.createPages = async (params) => {
-  await Promise.all([createPiePages(params), createToppingPages(params)]);
+exports.createPages = async ({ graphql, actions }) => {
+  await Promise.all([
+    createPiePages({ graphql, actions }),
+    createToppingPages({ graphql, actions }),
+    eachWinePage({ graphql, actions }),
+  ]);
 };

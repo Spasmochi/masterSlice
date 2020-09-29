@@ -3,8 +3,9 @@ import React from "react";
 import { Pagination, WineGrid } from "../components/index";
 
 const wines = ({ data, pageContext }) => {
+  console.log(process.env.GATSBY_PAGE_SIZE);
   const wines = data.wines.nodes;
-
+  console.log(pageContext);
   return (
     <>
       <Pagination
@@ -12,6 +13,7 @@ const wines = ({ data, pageContext }) => {
         totalCount={data.wines.totalCount}
         currentPage={pageContext.currentPage || 1}
         base="wines"
+        skip={pageContext.skip}
       ></Pagination>
       <WineGrid Wine={wines} />
     </>
