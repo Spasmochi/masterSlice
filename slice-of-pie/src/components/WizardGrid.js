@@ -15,30 +15,38 @@ const WizardsGrid = styled.div`
     grid-template-columns: repeat(3, minmax(0, 1fr));
     max-width: none;
   }
+  .gatsby-image-wrapper {
+    height: 400px;
+  }
 `;
 
 const WizardCard = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 2rem;
+  justify-content: flex-start;
+  padding: 0.5rem;
+  align-items: center;
   img {
     object-fit: contain;
   }
-  div {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: col;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
+`;
+
+const WizardProfile = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: -10rem;
+  z-index: 2;
+  padding: 0 1rem;
+  background-color: hsla(47, 80%, 50%, 0.8);
 `;
 
 const SingleWizard = ({ Wizard }) => (
   <WizardCard>
     <Img fixed={Wizard.image.asset.fixed} alt={Wizard.name} />
-    <span>{Wizard.name}</span>
-    <p>{Wizard.description}</p>
+    <WizardProfile>
+      <span>{Wizard.name}</span>
+      <p>{Wizard.description}</p>
+    </WizardProfile>
   </WizardCard>
 );
 

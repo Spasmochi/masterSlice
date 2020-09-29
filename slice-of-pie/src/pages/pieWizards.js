@@ -12,6 +12,7 @@ const pieWizards = ({ data }) => {
 
 export default pieWizards;
 
+// This is a comment
 export const query = graphql`
   query {
     wizards: allSanityWizard {
